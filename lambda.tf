@@ -5,25 +5,25 @@ provider "aws" {
   # profile = "aws-profile" 
 }
 
-data "archive_file" "lambda_terraform_test" {
+data "archive_file" "lambda_file" {
   type = "zip"
 
-  source_dir  = "${path.module}/terraform_test"
-  output_path = "${path.module}/terraform_test.zip"
+  source_dir  = "${path.module}/lambda"
+  output_path = "${path.module}/lambda.zip"
 }
 
 # to Create function
-resource "aws_lambda_function" "terraform_test" {
+resource "aws_lambda_function" "lambda" {
   function_name = "lbd-authentication"
-  filename      = "terraform_test.zip"
+  filename      = "lambda.zip"
   runtime = "nodejs18.x"
   handler = "index.handler"
-  source_code_hash = data.archive_file.lambda_terraform_test.output_base64sha256
+  source_code_hash = data.archive_file.lambda_file.output_base64sha256
   role             = aws_iam_role.lambda_exec.arn
 }
 
-resource "aws_cloudwatch_log_group" "terraform_test" {
-  name = "/aws/lambda/terraform_test"
+resource "aws_cloudwatch_log_group" "lambda" {
+  name = "/aws/lambda/lbd-authentication"
   retention_in_days = 30
 }
 
