@@ -6,18 +6,17 @@ import {
 } from "@aws-sdk/client-cognito-identity-provider";
 
 export const handler = async (event: any) => {
-  const login = event.headers.login;
-  const password = event.headers.password;
+  const data = event.body;
 
   const client = new CognitoIdentityProviderClient({});
 
   const command = new InitiateAuthCommand({
     AuthFlow: AuthFlowType.USER_PASSWORD_AUTH,
     AuthParameters: {
-      USERNAME: login,
-      PASSWORD: password
+      USERNAME: data.login,
+      PASSWORD: data.password
     },
-    ClientId: 'hk6lfc2knq0q6mnpdoov9hvrk'
+    ClientId: '371g5rnln41qgrjfa7qe2qhf2'
   });
 
   const response = await client.send(command)
