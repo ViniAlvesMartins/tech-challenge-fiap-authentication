@@ -20,7 +20,6 @@ export const handler = async (event: any) => {
   });
 
   const response = await client.send(command)
-  console.log(response)
 
   return response
 }
