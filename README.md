@@ -1,6 +1,6 @@
 # tech-challenge-fiap-authentication
 
-Aplicação responsável pela gestão da lambda authorizer
+Aplicação responsável pela gestão da lambda authentication
 
 [Validação local](#validação-local)
 
