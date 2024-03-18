@@ -19,7 +19,7 @@ export const handler = async (event: any) => {
     ClientId: '371g5rnln41qgrjfa7qe2qhf2'
   });
 
-  const response = await client.send(command);
+  const response = await client.send(command)
 
   return response
 }
