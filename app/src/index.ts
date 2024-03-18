@@ -6,7 +6,7 @@ import {
 } from "@aws-sdk/client-cognito-identity-provider";
 
 export const handler = async (event: any) => {
-  const data = event.body;
+  const data = event;
 
   const client = new CognitoIdentityProviderClient({});
 
