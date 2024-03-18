@@ -7,4 +7,10 @@ terraform {
       source  = "hashicorp/aws"
     }
   }
+
+  backend "s3" {
+    bucket = "state-version-tech"
+    key = "terraform-lambda-authentication-state"
+    region = "us-east-1"
+  }
 }

@@ -6,7 +6,7 @@ import {
 } from "@aws-sdk/client-cognito-identity-provider";
 
 export const handler = async (event: any) => {
-  const data = event.body;
+  const data = event;
 
   const client = new CognitoIdentityProviderClient({});
 
@@ -19,8 +19,7 @@ export const handler = async (event: any) => {
     ClientId: '371g5rnln41qgrjfa7qe2qhf2'
   });
 
-  const response = await client.send(command)
-  console.log(response)
+  const response = await client.send(command);
 
   return response
 }
